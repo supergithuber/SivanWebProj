@@ -37,6 +37,15 @@ router.get('/register', (req, res, next) => {
   
 });
 
+router.get('/delete', (req, res, next) => {
+  var username = req.query.username;
+  var userEntity = {username: username};
+  userModel.delete(userEntity).then(() => {
+    // 删除成功
+    res.json({status: 200, msg: "delete success"});
+  });
+});
+
 // 获取用户信息
 function getUser(username, callback) {
   userModel.findOne({username: username}).then(user => {
