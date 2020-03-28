@@ -37,16 +37,13 @@ router.get('/register', (req, res, next) => {
   
 });
 
-router.get('/delete/:username', (req, res, next) => {
-  userModel.findOneAndRemove({
-    _username: req.query.id
-  }).then(userModel => res.json({
-    status:200,
-    msg:"删除成功"
-  })).catch(err => res.json({
-    status:200,
-    msg:"删除失败"
-  }));
+router.get('/delete', (req, res, next) => {
+  var username = req.query.username;
+  var userEntity = {username: username};
+  userModel.delete(userEntity).then(() => {
+    // 删除成功
+    res.json({status: 200, msg: "delete success"});
+  });
 });
 
 // 获取用户信息
