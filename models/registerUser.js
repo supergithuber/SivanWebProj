@@ -1,5 +1,6 @@
 //user 数据模型对象
 var mongoose = require('mongoose');
+var db = require('./db');
 
 var userSchema = new mongoose.Schema(
   {
@@ -12,4 +13,4 @@ var userSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model('registerUser', userSchema);
+module.exports = db.model('registerUser', userSchema);
