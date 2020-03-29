@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
       name:'sivanwu',
       age:12 }
   // 用 res.json 方法写接口
+  console.log('成功访问根目录，返回数据 =>', data);
   res.json({
     code:0,
     msg:'ok',

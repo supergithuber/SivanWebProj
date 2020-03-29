@@ -31,6 +31,7 @@ router.get('/register', (req, res, next) => {
     // 正确注册
     var userEntity = {username: username, password: password, nick: nick, registerTime: utils.getDateTime()};
     userModel.create(userEntity).then(user => {
+      console.log('创建用户成功');
       res.json({status: 200, data: user});
     });
   });
@@ -48,7 +49,9 @@ router.get('/delete', (req, res, next) => {
 
 // 获取用户信息
 function getUser(username, callback) {
+  console.log('调用了去数据库查找用户函数，等待数据库返回');
   userModel.findOne({username: username}).then(user => {
+    console.log('从数据库中查找用户 =>', user);
     callback(user);
   });
 }
