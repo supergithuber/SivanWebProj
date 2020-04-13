@@ -1,16 +1,20 @@
 //user 数据模型对象
 var mongoose = require('mongoose');
-var db = require('./db');
+var db = require('./dbConnection.js');
 
 var userSchema = new mongoose.Schema(
   {
     username: String,
+    email: String,
     password: String,
-    head: String,
     nick: String,
+    mobile: String,
+    question: String,
+    answer: String,
     registerTime: String,
     lastLoginTime: String
   }
 );
 
-module.exports = db.model('registerUser', userSchema);
+let registerModel = db.model('registerUser', userSchema);
+module.exports =  registerModel;

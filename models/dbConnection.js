@@ -2,9 +2,9 @@
 var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
-const DB_URL = 'mongodb://localhost:27017/sivanMongoDB';
+const DB_URL = 'mongodb://localhost:27017/SivanWebProjDatabase';
 // 连接数据库，数据库名为，端口号为 27017
-mongoose.connect(DB_URL, { useNewUrlParser: true },(err,res)=>{
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true },(err,res)=>{
     if(!err){
         console.log("mongodb数据库连接成功")
         console.log(res)
