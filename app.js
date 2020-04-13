@@ -11,7 +11,16 @@ var usersRouter = require('./routes/users');
 var fightingConfigRouter = require('./routes/config');
 
 var app = express();
-var db = mongoose.connect('mongodb://localhost:27017/sivanwuDB');
+const DB_URL = 'mongodb://localhost:27017/SivanWebProjDatabase';
+// 连接数据库，数据库名为，端口号为 27017
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true },(err,res)=>{
+    if(!err){
+        console.log("mongodb数据库连接成功")
+        console.log(res)
+    }else{
+        console.log("mongodb数据库连接失败", err)
+    }
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
